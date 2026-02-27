@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Input Capturer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link href="bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .glass-card {
+            width: 420px;
+            padding: 40px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            color: white;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        .form-control {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+        }
+
+        .form-control::placeholder {
+            color: #eee;
+        }
+
+        .form-control:focus {
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: none;
+            color: white;
+        }
+
+        .btn-modern {
+            background: white;
+            color: #764ba2;
+            font-weight: bold;
+            border-radius: 50px;
+        }
+
+        .btn-modern:hover {
+            background: #f8f9fa;
+        }
+
+        .success-message {
+            display: none;
+            margin-top: 15px;
+            font-size: 14px;
+            color: #00ffcc;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="glass-card text-center">
+    <h3 class="mb-4"> User Input Capturer</h3>
+
+    <form id="userForm">
+        <div class="mb-3 text-start">
+            <label class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+        </div>
+
+        <div class="mb-3 text-start">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+        </div>
+
+        <button type="submit" class="btn btn-modern w-100 py-2">
+            Submit
+        </button>
+
+        <div class="success-message" id="successMsg">
+            
+        </div>
+    </form>
+</div>
+
+<script>
+    const form = document.getElementById('userForm');
+    const successMsg = document.getElementById('successMsg');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+
+        console.log("Name:", name);
+        console.log("Email:", email);
+
+        successMsg.style.display = "block";
+
+        form.reset();
+    });
+</script>
+
+</body>
+</html>
